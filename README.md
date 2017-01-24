@@ -1,6 +1,6 @@
 # Docker Auto-Update
 
-<a href="https://binfalse.de/2017/01/24/automatically-update-docker-images//"><img src="https://binfalse.de/assets/media/pics/2017/docker-auto-update.png"  title="Automatically Update your Docker Images" width="200px"></a>
+<a href="https://binfalse.de/2017/01/24/automatically-update-docker-images//"><img src="https://binfalse.de/assets/media/pics/2017/docker-auto-update.png"  title="Automatically Update your Docker Images" width="400px"></a>
 
 This is a tool that helps you keeping your Docker images and containers up-to-date.
 It basically consists of two files:
