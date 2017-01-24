@@ -13,7 +13,7 @@ You'll find [more information on the Docker Auto-Update tool in my blog](https:/
 
 ## Installation
 
-To install the Docker Auto-Update tool, you may clone the [git repository at GitHub](https://github.com/binfalse/docker-auto-update).
+To install the Docker Auto-Update tool, you may clone the [repository at GitHub](https://github.com/binfalse/docker-auto-update).
 Then move the `docker-updater.sh` script to `/etc/cron.daily/docker-updater.sh` and create a list of Docker Compose config files in `/etc/docker-compose-auto-update.conf` - one path to a `docker-compose.yml` per line.
 
 
