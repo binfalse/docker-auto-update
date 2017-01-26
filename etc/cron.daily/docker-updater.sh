@@ -42,12 +42,28 @@ then
 	cat "$DCOMPOSE" | /bin/grep -v '^#' | \
 	while read conf
 	do
-		if [ "$DEBUG" -eq 1 ]
+		if [ -e "$conf" ]
 		then
-			echo "updating docker compose in "
-			docker-compose -f $conf up -d --remove-orphans 2>&1
+			# docker-compose has problems with absolute paths...
+			# so we need to change into the directory
+			dir=$(dirname "$conf")
+			compfile=$(basename "$conf")
+			
+			cd "$dir"
+			
+			# do the updating part
+			if [ "$DEBUG" -eq 1 ]
+			then
+				echo "updating docker compose in "
+				docker-compose -f "$compfile" up -d --remove-orphans 2>&1
+			else
+				docker-compose -f "$compfile" up -d --remove-orphans 2>&1 | /bin/grep -v up-to-date
+			fi
+			
 		else
-			docker-compose -f $conf up -d --remove-orphans 2>&1 | /bin/grep -v up-to-date
+			# uhm.. that compose file doesn't exist?
+			# we should tell the admin..
+			echo "docker compose file $conf does not exist..."
 		fi
 	done
 fi
