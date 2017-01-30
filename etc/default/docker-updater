@@ -1,0 +1,38 @@
+#!/bin/bash
+#
+# Copyright 2016-2017  Martin Scharm
+#
+# This file is part of bf-docker-tools.
+# <https://github.com/binfalse/docker-tools>
+# <https://binfalse.de/2016/12/03/handy-docker-tools/>
+# <https://binfalse.de/2017/01/24/automatically-update-docker-images/>
+# <https://github.com/binfalse/docker-auto-update>
+#
+# bf-docker-tools is free software: you can redistribute it and/or modify it
+# under the terms of the GNU General Public License as published by the Free
+# Software Foundation, either version 3 of the License, or (at your option) any
+# later version.
+#
+# bf-docker-tools is distributed in the hope that it will be useful, but WITHOUT
+# ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+# FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License along with
+# bf-docker-tools. If not, see <http://www.gnu.org/licenses/>.
+
+
+## ENABLE DOCKER UPDATE
+# To enable the docker-update tool you need to set the follwoing variable to 1
+# Default: 0
+ENABLED=0
+
+## ENABLE DEBUG MODE
+# Set to 1 to enable the debug mode and get verbose output.
+# Default: 0
+DEBUG=0
+
+## PATH TO DOCKER-COMPOSE LIST
+# Set the path to the list of docker-compose environments. This file should
+# contain absolute paths to docker-compose.yml files, one per line
+# Default: /etc/docker-compose-auto-update.conf
+DCOMPOSE=/etc/docker-compose-auto-update.conf

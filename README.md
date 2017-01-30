@@ -3,9 +3,10 @@
 <a href="https://binfalse.de/2017/01/24/automatically-update-docker-images//"><img src="https://binfalse.de/assets/media/pics/2017/docker-auto-update.png"  title="Automatically Update your Docker Images" width="400px"></a>
 
 This is a tool that helps you keeping your Docker images and containers up-to-date.
-It basically consists of two files:
+It basically consists of three files:
 
 * [`/etc/cron.daily/docker-updater.sh` is the main script.](etc/cron.daily/docker-updater.sh) Placed in `/etc/cron.daily` it will regularly check for updates of your images.
+* [`/etc/default/docker-updater` configures the update tool.](etc/default/docker-updater) The `docker-updater.sh` will use this as a setup. At least you need to set the `ENABLED` variable to `1`, otherwise the update tool won't run.
 * [`/etc/docker-compose-auto-update.conf` lists Docker Compose environments.](etc/docker-compose-auto-update.conf) Add the paths to the `docker-compose.yml` files on your system, one per line. It will be read by the `docker-updater.sh` script and containers will be updated automatically.
 
 
@@ -14,7 +15,12 @@ You'll find [more information on the Docker Auto-Update tool in my blog](https:/
 ## Installation
 
 To install the Docker Auto-Update tool, you may clone the [repository at GitHub](https://github.com/binfalse/docker-auto-update).
-Then move the `docker-updater.sh` script to `/etc/cron.daily/docker-updater.sh` and create a list of Docker Compose config files in `/etc/docker-compose-auto-update.conf` - one path to a `docker-compose.yml` per line.
+Then,
+
+1. move the `docker-updater.sh` script to `/etc/cron.daily/docker-updater.sh`
+2. move the `docker-updater` config file to `/etc/default/docker-updater`
+3. update the setup in `/etc/default/docker-updater` -- at least set `ENABLED=1`
+4. create a list of Docker Compose config files in `/etc/docker-compose-auto-update.conf` - one path to a `docker-compose.yml` per line.
 
 
 If you're running a Debian-based system, you may instead [use my apt-repository to install the Docker-Tools](https://binfalse.de/software/apt-repo/).
@@ -22,7 +28,8 @@ In that case you just need to run
 
     aptitude install bf-docker-tools
 
-and you'll always stay up-to-date with bug fixes and new features :)
+Afterwards, configure `/etc/default/docker-updater` and at least set `ENABLED=1`.
+This way, you'll always stay up-to-date with bug fixes and new features :)
 
 
 ## Licence

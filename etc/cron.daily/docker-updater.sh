@@ -16,15 +16,31 @@
 # bf-docker-tools is distributed in the hope that it will be useful, but WITHOUT
 # ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
 # FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
-
+#
 # You should have received a copy of the GNU General Public License along with
 # bf-docker-tools. If not, see <http://www.gnu.org/licenses/>.
 
+
+
+
+# The following setup can be modified in
+# /etc/default/docker-updater
+# do not modify this file.
+
 # set to 1 to get some debugging output
 DEBUG=0
-
+# wouldn't update anything unless this is set to 1
+ENABLED=0
 # list of docker-compose configs
 DCOMPOSE=/etc/docker-compose-auto-update.conf
+
+
+# read configuration from settings file
+[ -e "/etc/default/docker-updater" ] && source "/etc/default/docker-updater"
+
+
+# check if updates are enabled
+[ "$ENABLED" -eq 1 ] || exit 0
 
 
 # update all docker images
