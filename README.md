@@ -5,9 +5,9 @@
 This is a tool that helps you keeping your Docker images and containers up-to-date.
 It basically consists of three files:
 
-* [`/etc/cron.daily/docker-updater.sh` is the main script.](etc/cron.daily/docker-updater.sh) Placed in `/etc/cron.daily` it will regularly check for updates of your images.
-* [`/etc/default/docker-updater` configures the update tool.](etc/default/docker-updater) The `docker-updater.sh` will use this as a setup. At least you need to set the `ENABLED` variable to `1`, otherwise the update tool won't run.
-* [`/etc/docker-compose-auto-update.conf` lists Docker Compose environments.](etc/docker-compose-auto-update.conf) Add the paths to the `docker-compose.yml` files on your system, one per line. It will be read by the `docker-updater.sh` script and containers will be updated automatically.
+* [`/etc/cron.daily/docker-updater` is the main script.](etc/cron.daily/docker-updater) Placed in `/etc/cron.daily` it will regularly check for updates of your images.
+* [`/etc/default/docker-updater` configures the update tool.](etc/default/docker-updater) The `/etc/cron.daily/docker-updater` will use this as a setup. At least you need to set the `ENABLED` variable to `1`, otherwise the update tool won't run.
+* [`/etc/docker-compose-auto-update.conf` lists Docker Compose environments.](etc/docker-compose-auto-update.conf) Add the paths to the `docker-compose.yml` files on your system, one per line. It will be read by the `/etc/cron.daily/docker-updater` script and containers will be updated automatically.
 
 
 You'll find [more information on the Docker Auto-Update tool in my blog](https://binfalse.de/2017/01/24/automatically-update-docker-images/).
@@ -17,8 +17,8 @@ You'll find [more information on the Docker Auto-Update tool in my blog](https:/
 To install the Docker Auto-Update tool, you may clone the [repository at GitHub](https://github.com/binfalse/docker-auto-update).
 Then,
 
-1. move the `docker-updater.sh` script to `/etc/cron.daily/docker-updater.sh`
-2. move the `docker-updater` config file to `/etc/default/docker-updater`
+1. move the `./etc/cron.daily/docker-updater` script to `/etc/cron.daily/docker-updater`
+2. move the `./etc/default/docker-updater` config file to `/etc/default/docker-updater`
 3. update the setup in `/etc/default/docker-updater` -- at least set `ENABLED=1`
 4. create a list of Docker Compose config files in `/etc/docker-compose-auto-update.conf` - one path to a `docker-compose.yml` per line.
 
